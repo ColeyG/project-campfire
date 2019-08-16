@@ -1,3 +1,11 @@
 body {
-  background: red;
+  background-color: #161616;
+  overflow: hidden;
+}
+#game {
+  background-image: url("../resources/cork-wallet.png");
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  transform: scale(1);
 }
