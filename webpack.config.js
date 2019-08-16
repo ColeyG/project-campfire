@@ -1,4 +1,5 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
   watch: true,
   output: {
     path: path.resolve(__dirname, "compiled"),
-    filename: "./compiled/built.js",
+    filename: "./built.js",
   },
   module: {
     rules: [
@@ -18,12 +19,18 @@ module.exports = {
         },
       },
       {
-        test: /\.(scss)$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"],
-        }),
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -31,5 +38,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new ExtractTextPlugin({ filename: "compiled/bundled.css" })],
+  plugins: [new MiniCssExtractPlugin({ filename: "bundled.css" })],
 };
