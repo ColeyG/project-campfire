@@ -1,0 +1,21 @@
+.card {
+  width: 200px;
+  height: 250px;
+  background-color: antiquewhite;
+  box-shadow: 3px 10px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  img {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+.dragging {
+  background-color: red;
+  position: absolute;
+  margin: 0;
+}
