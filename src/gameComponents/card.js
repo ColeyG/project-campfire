@@ -12,30 +12,33 @@ class Card extends React.Component {
     };
   }
   componentDidMount() {
-    interact(".card").draggable({
-      listeners: {
-        start(event) {
-          console.log(event.type, event.target);
-        },
-        move(event) {
-          // TODO: Allow state to be accessed. Perhaps create another method?
-          let xMovement = this.state.tranlateX + event.dx;
-          let yMovement = this.state.tranlateT + event.dy;
-          this.setState({
-            tranlateX: xMovement,
-            translateY: yMovement,
-          });
-          console.log(this.state.translateX);
-          console.log(this.state.translateY);
+    interact(".card")
+      .draggable({
+        inertia: true,
+      })
+      .on("dragmove", function(event) {
+        //TODO: add shrink fixes
+        var x = parseFloat(event.target.getAttribute("data-x")) || 0;
+        var y = parseFloat(event.target.getAttribute("data-y")) || 0;
 
-          //event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
-        },
-      },
-    });
+        x += event.dx;
+        y += event.dy;
+
+        event.target.setAttribute("data-x", x);
+        event.target.setAttribute("data-y", y);
+
+        event.target.style.transform = "translate(" + x + "px, " + y + "px)";
+      });
+  }
+  pickup() {
+    console.log("picked up");
+  }
+  drop() {
+    console.log("dropped");
   }
   render() {
     return (
-      <div className="card">
+      <div className="card" onMouseDown={this.pickup} onMouseUp={this.drop}>
         <img src={"compiled/" + image} alt="Card Art" />
       </div>
     );
