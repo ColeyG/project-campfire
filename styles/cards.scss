@@ -5,12 +5,6 @@
   touch-action: none;
   user-select: none;
   @include card();
-  img {
-    pointer-events: none;
-    user-select: none;
-    max-width: 100%;
-    max-height: 100%;
-  }
 }
 .card-hand {
   transition: 0.2s;
