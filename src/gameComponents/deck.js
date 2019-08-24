@@ -6,7 +6,7 @@ class Deck extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardsInDeck: 5,
+      cardsInDeck: 100,
       fauxCards: [],
     };
   }
