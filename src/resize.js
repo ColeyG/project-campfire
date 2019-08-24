@@ -6,11 +6,13 @@ function resize() {
     gameCanvas.style.transform = "scale(" + gameSizeCoefficent + ")";
     gameCanvas.style.marginTop = (window.innerHeight - gameCanvas.offsetHeight * gameSizeCoefficent) / 2 + "px";
     gameCanvas.style.marginLeft = "0px";
+    gameCanvas.setAttribute("game-size-coefficient", gameSizeCoefficent);
   } else {
     let gameSizeCoefficent = window.innerHeight / 1080;
     gameCanvas.style.transform = "scale(" + gameSizeCoefficent + ")";
     gameCanvas.style.marginLeft = (window.innerWidth - gameCanvas.offsetWidth * gameSizeCoefficent) / 2 + "px";
     gameCanvas.style.marginTop = "0px";
+    gameCanvas.setAttribute("game-size-coefficient", gameSizeCoefficent);
   }
 }
 
