@@ -9,6 +9,13 @@ class Card extends React.Component {
       interaction: "dropped",
     };
   }
+  isHeld = () => {
+    if (this.state.interaction === "dropped") {
+      return false;
+    } else {
+      return true;
+    }
+  };
   drag = () => {
     if (this.state.interaction === "grabbed") {
       let x = parseFloat(event.target.getAttribute("data-x")) || 0;
@@ -34,7 +41,7 @@ class Card extends React.Component {
   };
   render() {
     return (
-      <div className="card" onMouseDown={this.pickup} onMouseUp={this.drop} onMouseMove={this.drag}>
+      <div className={this.isHeld() ? "card" : "card card-hand"} onMouseDown={this.pickup} onMouseUp={this.drop} onMouseMove={this.drag}>
         <img src={"compiled/" + image} alt="Card Art" />
       </div>
     );
