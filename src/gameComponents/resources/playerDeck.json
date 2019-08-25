@@ -3,5 +3,12 @@
   "king-of-clubs": 1,
   "king-of-spades": 1,
   "king-of-diamonds": 1,
-  "ace-of-clubs": 1
+  "queen-of-hearts": 1,
+  "queen-of-clubs": 1,
+  "queen-of-spades": 1,
+  "queen-of-diamonds": 1,
+  "ace-of-hearts": 1,
+  "ace-of-clubs": 1,
+  "ace-of-spades": 1,
+  "ace-of-diamonds": 1
 }
