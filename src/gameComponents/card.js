@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/cards.scss";
-const image = require("../../resources/Plebes/V2_4x/PixelPlebes_V2_4x__02.png");
 
 class Card extends React.Component {
   constructor(props) {
@@ -45,7 +44,7 @@ class Card extends React.Component {
   render() {
     return (
       <div className={this.isHeld() ? "card" : "card card-hand"} onMouseDown={this.pickup} onMouseUp={this.drop} onMouseMove={this.drag}>
-        <img src={"compiled/" + image} alt="Card Art" />
+        <img src={"compiled/" + require("../../resources/" + this.props.cardInfo.image)} alt="Card Art" />
       </div>
     );
   }

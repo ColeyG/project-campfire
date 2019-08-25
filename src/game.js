@@ -7,13 +7,15 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardsInHand: ["king-of-hearts", "king-of-hearts"],
+      cardsInHand: ["king-of-hearts", "ace-of-clubs"],
     };
   }
   drawCardMethod = () => {
     let currentCards = this.state.cardsInHand;
 
-    currentCards.push("king-of-hearts");
+    console.log("asdf");
+
+    currentCards.push("ace-of-clubs");
 
     this.setState({ cardsInHand: currentCards });
   };

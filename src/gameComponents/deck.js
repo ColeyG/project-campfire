@@ -25,7 +25,7 @@ class Deck extends React.Component {
     let newDeck = this.state.fauxCards;
     newDeck.shift();
     this.setState({ fauxCards: newDeck });
-    console.log(this.props.drawCardMethod());
+    this.props.drawCardMethod();
   };
   render() {
     return (
