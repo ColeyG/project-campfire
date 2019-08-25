@@ -5,8 +5,11 @@ const image = require("../../resources/Plebes/V2_4x/PixelPlebes_V2_4x__53.png");
 class Deck extends React.Component {
   constructor(props) {
     super(props);
+    let deck = require("./resources/playerDeck.json");
+    let deckSize = Object.keys(deck).length;
+
     this.state = {
-      cardsInDeck: 100,
+      cardsInDeck: deckSize,
       fauxCards: [],
     };
   }
