@@ -17,6 +17,7 @@ class Game extends React.Component {
     let randKey = keys[(keys.length * Math.random()) << 0];
 
     if (this.state.playerDeck[randKey] >= 1) {
+      console.log(randKey);
       return randKey;
     } else {
       console.log("something went wrong, that card has 0 copies");
