@@ -4,7 +4,16 @@
   box-shadow: 3px 10px 5px rgba(0, 0, 0, 0.25);
   touch-action: none;
   user-select: none;
+  z-index: 1;
   @include card();
+  &:nth-child(n + 11) {
+    z-index: 0;
+    margin-bottom: -130px;
+  }
+  &:nth-child(n + 21) {
+    z-index: -1;
+    margin-bottom: -130px;
+  }
 }
 .card-hand {
   transition: 0.2s;
