@@ -33,11 +33,14 @@ class Card extends React.Component {
   };
   pickup = () => {
     this.setState({ interaction: "grabbed" });
-    console.log("picked up");
   };
   drop = () => {
+    // TODO: Fix drop state and movable without m1 button down
     this.setState({ interaction: "dropped" });
-    console.log("dropped");
+    event.target.setAttribute("data-x", 0);
+    event.target.setAttribute("data-y", 0);
+
+    event.target.style.transform = "translate(0px, 0px)";
   };
   render() {
     return (

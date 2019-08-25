@@ -4,13 +4,13 @@ import "../../styles/hand.scss";
 
 class Hand extends React.Component {
   render() {
-    return (
-      <div className="hand">
-        <Card />
-        <Card />
-        <Card />
-      </div>
-    );
+    let cardsInHand = [];
+
+    this.props.cards.forEach((element, index) => {
+      cardsInHand.push(<Card key={index} name={element} />);
+    });
+
+    return <div className="hand">{cardsInHand}</div>;
   }
 }
 
