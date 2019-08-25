@@ -13,8 +13,6 @@ class Game extends React.Component {
   drawCardMethod = () => {
     let currentCards = this.state.cardsInHand;
 
-    console.log("asdf");
-
     currentCards.push("ace-of-clubs");
 
     this.setState({ cardsInHand: currentCards });
