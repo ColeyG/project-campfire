@@ -36,6 +36,11 @@ class Card extends React.Component {
   drop = () => {
     // TODO: Fix drop state and movable without m1 button down
     this.setState({ interaction: "dropped" });
+
+    if (event.target.getAttribute("data-y") < -180) {
+      this.playCard();
+    }
+
     event.target.setAttribute("data-x", 0);
     event.target.setAttribute("data-y", 0);
 
@@ -43,6 +48,8 @@ class Card extends React.Component {
   };
   playCard = () => {
     // @TODO: add playing cards
+    this.props.playCardMethod(this.props.cardInfo.effect);
+    event.target.style.border = "5px solid red";
   };
   render() {
     return (

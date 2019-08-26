@@ -37,11 +37,14 @@ class Game extends React.Component {
 
     this.setState({ cardsInHand: currentCards });
   };
+  playCardMethod = effect => {
+    console.log(effect);
+  };
   render() {
     return (
       <React.Fragment>
         <Deck drawCardMethod={this.drawCardMethod} />
-        <Hand cards={this.state.cardsInHand} />
+        <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} />
       </React.Fragment>
     );
   }
