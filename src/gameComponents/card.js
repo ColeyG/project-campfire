@@ -41,6 +41,9 @@ class Card extends React.Component {
 
     event.target.style.transform = "translate(0px, 0px)";
   };
+  playCard = () => {
+    // @TODO: add playing cards
+  };
   render() {
     return (
       <div className={this.isHeld() ? "card" : "card card-hand"} onMouseDown={this.pickup} onMouseUp={this.drop} onMouseMove={this.drag}>
