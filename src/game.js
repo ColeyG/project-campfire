@@ -2,6 +2,7 @@
 import React from "react";
 import Hand from "./gameComponents/hand.js";
 import Deck from "./gameComponents/deck.js";
+import Effects from "./gameComponents/effects.js";
 
 class Game extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class Game extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Effects />
         <Deck drawCardMethod={this.drawCardMethod} />
         <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} />
       </React.Fragment>
