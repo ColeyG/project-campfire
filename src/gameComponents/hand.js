@@ -14,7 +14,7 @@ class Hand extends React.Component {
 
     this.props.cards.forEach((element, index) => {
       let cardInfo = this.state.cards[element];
-      cardsInHand.push(<Card key={index} name={element} cardInfo={cardInfo} playCardMethod={this.props.playCardMethod} />);
+      cardsInHand.push(<Card key={index} name={element} cardInfo={cardInfo} playCardMethod={this.props.playCardMethod} controls={this.props.controls} />);
     });
 
     return <div className="hand">{cardsInHand}</div>;

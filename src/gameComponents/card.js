@@ -17,24 +17,27 @@ class Card extends React.Component {
   };
   drag = () => {
     if (this.state.interaction === "grabbed") {
-      let x = parseFloat(event.target.getAttribute("data-x")) || 0;
-      let y = parseFloat(event.target.getAttribute("data-y")) || 0;
-      let gameSizeCoefficient = document.querySelector("#game").getAttribute("game-size-coefficient");
+      if (this.props.controls.mouse === "up") {
+        this.returnToHand();
+      } else {
+        let x = parseFloat(event.target.getAttribute("data-x")) || 0;
+        let y = parseFloat(event.target.getAttribute("data-y")) || 0;
+        let gameSizeCoefficient = document.querySelector("#game").getAttribute("game-size-coefficient");
 
-      x += event.movementX / gameSizeCoefficient;
-      y += event.movementY / gameSizeCoefficient;
+        x += event.movementX / gameSizeCoefficient;
+        y += event.movementY / gameSizeCoefficient;
 
-      event.target.setAttribute("data-x", x);
-      event.target.setAttribute("data-y", y);
+        event.target.setAttribute("data-x", x);
+        event.target.setAttribute("data-y", y);
 
-      event.target.style.transform = "translate(" + x + "px, " + y + "px)";
+        event.target.style.transform = "translate(" + x + "px, " + y + "px)";
+      }
     }
   };
   pickup = () => {
     this.setState({ interaction: "grabbed" });
   };
   drop = () => {
-    // TODO: Fix drop state and movable without m1 button down
     this.setState({ interaction: "dropped" });
 
     if (event.target.getAttribute("data-y") < -180) {
@@ -47,9 +50,16 @@ class Card extends React.Component {
     event.target.style.transform = "translate(0px, 0px)";
   };
   playCard = () => {
-    // @TODO: add playing cards
     this.props.playCardMethod(this.props.cardInfo.effect);
     event.target.style.border = "5px solid red";
+  };
+  returnToHand = () => {
+    this.setState({ interaction: "dropped" });
+
+    event.target.setAttribute("data-x", 0);
+    event.target.setAttribute("data-y", 0);
+
+    event.target.style.transform = "translate(0px, 0px)";
   };
   render() {
     return (

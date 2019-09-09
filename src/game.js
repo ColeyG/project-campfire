@@ -11,14 +11,47 @@ class Game extends React.Component {
       cardsInHand: [],
       playerDeck: require("./gameComponents/resources/playerDeck.json"),
       cardsDrawn: [],
+      controls: {
+        mouse: "up",
+      },
     };
   }
+  componentDidMount = () => {
+    document.body.addEventListener("mousedown", () => {
+      this.mouseControls("down");
+    });
+    document.body.addEventListener("mouseup", () => {
+      this.mouseControls("up");
+    });
+    document.body.addEventListener("keydown", this.keyboardControls);
+  };
+  componentWillUnmount = () => {
+    document.body.addEventListener("mousedown", () => {
+      this.mouseControls("down");
+    });
+    document.body.addEventListener("mouseup", () => {
+      this.mouseControls("up");
+    });
+    document.body.addEventListener("keydown", this.keyboardControls);
+  };
+  mouseControls = type => {
+    if (type === "down") {
+      this.setState({ controls: { mouse: "down" } });
+    }
+    if (type === "up") {
+      this.setState({ controls: { mouse: "up" } });
+    }
+  };
+  keyboardControls = event => {
+    // TODO: Add enable disable flow here. Currently working only on down
+    // console.log(event.key);
+  };
   getRandomCardFromDeck = () => {
     var keys = Object.keys(this.state.playerDeck);
     let randKey = keys[(keys.length * Math.random()) << 0];
 
     if (this.state.playerDeck[randKey] >= 1) {
-      console.log(randKey);
+      // console.log(randKey);
       return randKey;
     } else {
       console.log("something went wrong, that card has 0 copies");
@@ -46,7 +79,7 @@ class Game extends React.Component {
       <React.Fragment>
         <Effects />
         <Deck drawCardMethod={this.drawCardMethod} />
-        <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} />
+        <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} controls={this.state.controls} />
       </React.Fragment>
     );
   }
