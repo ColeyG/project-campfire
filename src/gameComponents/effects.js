@@ -1,7 +1,8 @@
 import React from "react";
+import EffectLibrary from "./resources/effectLibrary.js";
 import "../../styles/effects.scss";
 
-class Effects extends React.Component {
+class Effects extends EffectLibrary {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +16,8 @@ class Effects extends React.Component {
   };
   triggerEffect = effect => {
     console.log("triggered: " + effect);
+    eval("this." + effect + "();");
+    this.props.removeEffectMethod();
   };
   render() {
     return (

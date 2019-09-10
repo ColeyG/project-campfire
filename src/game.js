@@ -75,10 +75,13 @@ class Game extends React.Component {
   playCardMethod = effect => {
     this.setState({ effects: effect });
   };
+  removeEffectMethod = () => {
+    this.setState({ effects: "" });
+  };
   render() {
     return (
       <React.Fragment>
-        <Effects effect={this.state.effects} />
+        <Effects effect={this.state.effects} removeEffectMethod={this.removeEffectMethod} />
         <Deck drawCardMethod={this.drawCardMethod} />
         <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} controls={this.state.controls} />
       </React.Fragment>
