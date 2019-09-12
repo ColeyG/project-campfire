@@ -41,7 +41,7 @@ class Card extends React.Component {
     this.setState({ interaction: "dropped" });
 
     if (event.target.getAttribute("data-y") < -180) {
-      this.playCard();
+      this.playCard(event.target.getAttribute("data-x"), event.target.getAttribute("data-y"));
     }
 
     event.target.setAttribute("data-x", 0);
@@ -49,8 +49,8 @@ class Card extends React.Component {
 
     event.target.style.transform = "translate(0px, 0px)";
   };
-  playCard = () => {
-    this.props.playCardMethod(this.props.cardInfo.effect);
+  playCard = (x, y) => {
+    this.props.playCardMethod(this.props.cardInfo.effect, x, y);
     event.target.style.border = "5px solid red";
   };
   returnToHand = () => {

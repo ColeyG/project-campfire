@@ -18,10 +18,12 @@ class Effects extends EffectLibrary {
   };
   triggerEffect = effect => {
     if (Object.getOwnPropertyNames(this).includes(effect)) {
-      console.log("triggered: " + effect);
+      console.log("triggered: " + effect + " X: " + this.props.coords.x + " Y: " + this.props.coords.y);
       eval("this." + effect + "();");
     } else {
-      console.log("didn't trigger: " + effect + ", couldn't find a method");
+      if (effect !== undefined) {
+        console.log("didn't trigger " + effect + " effect, couldn't find a method");
+      }
     }
     this.props.removeEffectMethod();
   };

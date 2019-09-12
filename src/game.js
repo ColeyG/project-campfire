@@ -14,7 +14,6 @@ class Game extends React.Component {
       controls: {
         mouse: "up",
       },
-      effects: "",
     };
   }
   componentDidMount = () => {
@@ -72,8 +71,8 @@ class Game extends React.Component {
 
     this.setState({ cardsInHand: currentCards });
   };
-  playCardMethod = effect => {
-    this.setState({ effects: effect });
+  playCardMethod = (effect, x = 0, y = 0) => {
+    this.setState({ effects: effect, x: x, y: y });
   };
   removeEffectMethod = () => {
     this.setState({ effects: "" });
@@ -81,7 +80,7 @@ class Game extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Effects effect={this.state.effects} removeEffectMethod={this.removeEffectMethod} />
+        <Effects effect={this.state.effects} coords={{ x: this.state.x, y: this.state.y }} removeEffectMethod={this.removeEffectMethod} />
         <Deck drawCardMethod={this.drawCardMethod} />
         <Hand cards={this.state.cardsInHand} playCardMethod={this.playCardMethod} controls={this.state.controls} />
       </React.Fragment>
