@@ -7,6 +7,8 @@ class Effects extends EffectLibrary {
     super(props);
     this.state = {
       effects: [],
+      currentEffect: "",
+      effectStyle: { opacity: 0 },
     };
   }
   componentDidUpdate = () => {
@@ -15,16 +17,20 @@ class Effects extends EffectLibrary {
     }
   };
   triggerEffect = effect => {
-    console.log("triggered: " + effect);
-    eval("this." + effect + "();");
+    if (Object.getOwnPropertyNames(this).includes(effect)) {
+      console.log("triggered: " + effect);
+      eval("this." + effect + "();");
+    } else {
+      console.log("didn't trigger: " + effect + ", couldn't find a method");
+    }
     this.props.removeEffectMethod();
   };
   render() {
     return (
       <React.Fragment>
         <div className="effect">
-          <div className="effect-area">
-            <img src={"compiled/" + require("../../resources/effects/polished-diamond.png")} alt="" />
+          <div className="effect-area" style={this.state.effectStyle}>
+            {this.state.currentEffect}
           </div>
         </div>
       </React.Fragment>
