@@ -25,7 +25,7 @@ class Deck extends React.Component {
     this.setState({ fauxCards: fauxCards });
   }
   drawCard = () => {
-    // @TODO: Don't let an empty deck draw
+    // TODO: Don't let an empty deck draw
     let newDeck = this.state.fauxCards;
     newDeck.shift();
     this.setState({ fauxCards: newDeck });
