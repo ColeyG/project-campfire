@@ -6,7 +6,9 @@ import Effects from "./gameComponents/effects.js";
 const classes = require("extends-classes");
 import TestClass from "./gameComponents/test.js";
 
-class Game extends classes(React.Component, TestClass) {
+// React = classes(React, TestClass);
+
+class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
