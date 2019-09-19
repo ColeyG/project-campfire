@@ -3,8 +3,10 @@ import React from "react";
 import Hand from "./gameComponents/hand.js";
 import Deck from "./gameComponents/deck.js";
 import Effects from "./gameComponents/effects.js";
+const classes = require("extends-classes");
+import TestClass from "./gameComponents/test.js";
 
-class Game extends React.Component {
+class Game extends classes(React.Component, TestClass) {
   constructor(props) {
     super(props);
     this.state = {
