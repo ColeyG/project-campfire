@@ -3,6 +3,7 @@ import React from "react";
 import Hand from "./gameComponents/hand.js";
 import Deck from "./gameComponents/deck.js";
 import Effects from "./gameComponents/effects.js";
+import Controls from "./gameComponents/controls.js";
 
 class Game extends React.Component {
   constructor(props) {
@@ -15,15 +16,17 @@ class Game extends React.Component {
         mouse: "up",
       },
     };
+    this.Controls = new Controls(this);
+    // TODO: Bind more stuff this way
   }
   componentDidMount = () => {
     document.body.addEventListener("mousedown", () => {
-      this.mouseControls("down");
+      this.Controls.mouseControls("down");
     });
     document.body.addEventListener("mouseup", () => {
-      this.mouseControls("up");
+      this.Controls.mouseControls("up");
     });
-    document.body.addEventListener("keydown", this.keyboardControls);
+    document.body.addEventListener("keydown", this.Controls.keyboardControls);
   };
   componentWillUnmount = () => {
     document.body.addEventListener("mousedown", () => {
@@ -33,18 +36,6 @@ class Game extends React.Component {
       this.mouseControls("up");
     });
     document.body.addEventListener("keydown", this.keyboardControls);
-  };
-  mouseControls = type => {
-    if (type === "down") {
-      this.setState({ controls: { mouse: "down" } });
-    }
-    if (type === "up") {
-      this.setState({ controls: { mouse: "up" } });
-    }
-  };
-  keyboardControls = event => {
-    // TODO: Add enable disable flow here. Currently working only on down
-    // console.log(event.key);
   };
   getRandomCardFromDeck = () => {
     var keys = Object.keys(this.state.playerDeck);
