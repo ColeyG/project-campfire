@@ -1,32 +1,33 @@
-import React from "react";
-import EffectLibrary from "./resources/effectLibrary.js";
-import "../../styles/effects.scss";
+import React from 'react';
+import EffectLibrary from './resources/effectLibrary';
+import '../../styles/effects.scss';
 
 class Effects extends EffectLibrary {
   constructor(props) {
     super(props);
     this.state = {
       effects: [],
-      currentEffect: "",
+      currentEffect: '',
       effectStyle: { opacity: 0 },
     };
   }
+
   componentDidUpdate = () => {
-    if (this.props.effect !== "") {
+    if (this.props.effect !== '') {
       this.triggerEffect(this.props.effect);
     }
   };
-  triggerEffect = effect => {
+
+  triggerEffect = (effect) => {
     if (Object.getOwnPropertyNames(this).includes(effect)) {
-      console.log("triggered: " + effect + ", X: " + this.props.coords.x + " Y: " + this.props.coords.y);
-      eval("this." + effect + "();");
-    } else {
-      if (effect !== undefined) {
-        console.log("didn't trigger " + effect + " effect, couldn't find a method");
-      }
+      console.log(`triggered: ${effect}, X: ${this.props.coords.x} Y: ${this.props.coords.y}`);
+      eval(`this.${effect}();`);
+    } else if (effect !== undefined) {
+      console.log(`didn't trigger ${effect} effect, couldn't find a method`);
     }
     this.props.removeEffectMethod();
   };
+
   render() {
     return (
       <React.Fragment>

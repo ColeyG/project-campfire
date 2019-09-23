@@ -16,9 +16,13 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "cssnano": "^4.1.10",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "file-loader": "^4.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "postcss-loader": "^3.0.0",
@@ -27,8 +31,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "prod": "./node_modules/.bin/eslint *.js src/**.js --fix; webpack --mode production",
+    "dev": "webpack --mode development",
+    "lint": "./node_modules/.bin/eslint *.js src/**.js --fix;"
   },
   "repository": {
     "type": "git",
