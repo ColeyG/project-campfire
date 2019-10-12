@@ -13,18 +13,23 @@ class Effects extends EffectLibrary {
   }
 
   componentDidUpdate = () => {
-    if (this.props.effect !== '') {
+    if (this.props.effect !== undefined && this.props.effect !== '') {
+      this.setState((prevState) => ({
+        effects: [...prevState.effects, this.props.effect],
+      }));
       this.triggerEffect(this.props.effect);
     }
   };
 
   triggerEffect = (effect) => {
     if (Object.getOwnPropertyNames(this).includes(effect)) {
-      console.log(`triggered: ${effect}, X: ${this.props.coords.x} Y: ${this.props.coords.y}`);
+      // console.log(`triggered: ${effect}, X: ${this.props.coords.x} Y: ${this.props.coords.y}`);
       eval(`this.${effect}();`);
     } else if (effect !== undefined) {
       console.log(`didn't trigger ${effect} effect, couldn't find a method`);
     }
+    // TODO: Fix state management for the effect loop
+    console.log(`effects: ${this.state.effects}`);
     this.props.removeEffectMethod();
   };
 
