@@ -67,7 +67,7 @@ class Game extends React.Component {
     this.setState({ cardsInHand: currentCards });
   };
 
-  playCardMethod = (effect, x = 0, y = 0) => {
+  playCardMethod = (effect, x, y) => {
     this.setState({ effects: effect, x, y });
   };
 

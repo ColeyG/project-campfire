@@ -1,3 +1,4 @@
 [ ] Mouse move retargeting
   - Tighten the movement accuracy and prevent the card from sliding out from under the mouse
 [ ] Favicon
+[ ] Add effect chain: Require event stack to be empty for an event to fire
